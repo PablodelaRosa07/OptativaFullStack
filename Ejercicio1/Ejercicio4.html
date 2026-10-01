@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Cuarto Ejercicio</title>
+</head>
+<body>
+    <script>
+        var texto = prompt("Introduce un texto:");
+
+        if (texto !== null) {
+            var tamano = texto.length;
+            console.log("Tamaño de la cadena: " + tamano + " caracteres.");
+
+            var textoMinuscula = texto.toLowerCase();
+            
+            if (textoMinuscula.includes('t')) {
+                let posiciones = []; 
+                
+                for (let i = 0; i < textoMinuscula.length; i++) {
+                    if (textoMinuscula[i] === 't') {
+                        posiciones.push(i);
+                    }
+                }
+                
+                console.log("El texto contiene la letra 't' en las posiciones: " + posiciones.join(', '));
+            } else {
+                console.log("El texto no contiene la letra 't'.");
+            }
+
+            // 4. Mostrar toda la cadena en minúsculas y mayúsculas
+            console.log("Cadena en minúsculas: " + texto.toLowerCase());
+            console.log("Cadena en mayúsculas: " + texto.toUpperCase());
+        } else {
+            console.log("No introdujiste ningún texto.");
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title><h1>Ejercicio 1</h1>></title>
+</head>
+<body>
+    <script>
+        
+        var cantidad = parseInt(prompt("Cuantos elementos de tipo <p> quieres añadir?: "));
+
+        var padre = document.getElementsByTagName("h1")[0];
+
+        for (let index = 0; index < cantidad; index++) {
+            var nuevoParrafo = document.createElement("p");
+            nuevoParrafo.textContent = "Párrafo " +index;
+            padre.appendChild(nuevoParrafo);
+        }
+
+        
+
+
+
+    </script>
+
+</body>
+</html>
