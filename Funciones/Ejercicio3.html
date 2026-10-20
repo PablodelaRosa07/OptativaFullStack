@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo  - Ejercicio 3</title>
+</head>
+<body>
+
+  <button onclick="aceptar()">Aceptar</button>
+  <button onclick="cancelar()">Cancelar</button>
+
+  <label id="mensaje"></label>
+
+  <script>
+    function aceptar() {
+        document.getElementById("mensaje").innerText = "Está usted aceptando";
+    }
+
+    function cancelar() {
+        document.getElementById("mensaje").innerText = "Está usted cancelando"
+    }  
+    </script>
+
+</body>
+</html>
