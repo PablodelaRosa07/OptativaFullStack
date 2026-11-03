@@ -1,0 +1,4 @@
+ID: e38951c5-ce36-4894-a09d-85cae68d6afc
+Usuario: alumno
+Sistema: win32
+CPUs: 12
