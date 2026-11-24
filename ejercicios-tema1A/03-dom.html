@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>DOM - ejercicios resueltos</title>
+  <style>
+    body { font-family: sans-serif; margin: 20px; }
+    section { border: 1px solid #999; padding: 10px; margin: 14px 0; border-radius: 6px; }
+    h2 { margin-top: 0; font-size: 1.1em; color: #4b1535; }
+    .resaltado { background: yellow; }
+    .grande { font-size: 24px; }
+    .oculto { display: none; }
+    .caja { display: inline-block; padding: 8px; margin: 3px; border: 1px solid #333; }
+  </style>
+</head>
+<body>
+<h1>DOM - ejercicios resueltos (mira también la consola F12)</h1>
+
+<!-- ============ EJ 1: acceso a nodos (getElementsByTagName, ById, ByName, ByClassName, querySelector) ============ -->
+<section id="ej1">
+  <h2>EJ 1 - Acceso a nodos</h2>
+  <p>Primer párrafo con <a href="http://prueba">enlace 1</a> y <a href="http://otra.com">enlace 2</a>.</p>
+  <p class="parrafo">Segundo párrafo <a href="http://prueba">enlace 3</a>.</p>
+  <p class="parrafo" name="escrita">Tercer párrafo con <a href="http://prueba">enlace 4</a>, <a href="http://x.com">enlace 5</a> y <a href="http://y.com" class="enlace">enlace 6</a>.</p>
+  <button onclick="ej1()">Contar enlaces</button>
+</section>
+
+<!-- ============ EJ 2: crear y eliminar nodos ============ -->
+<section id="ej2">
+  <h2>EJ 2 - Crear y eliminar párrafos (createElement, createTextNode, appendChild, removeChild)</h2>
+  <div id="contenedor"><strong>Párrafos:</strong></div>
+  <button onclick="ej2crear()">Crear N párrafos</button>
+  <button onclick="ej2eliminar()">Eliminar todos</button>
+  <button onclick="ej2eliminarUltimo()">Eliminar el último</button>
+</section>
+
+<!-- ============ EJ 3: eventos Aceptar/Cancelar ============ -->
+<section id="ej3">
+  <h2>EJ 3 - Eventos onclick</h2>
+  <button onclick="document.getElementById('msg').innerText = 'Está usted aceptando'">Aceptar</button>
+  <button onclick="document.getElementById('msg').innerText = 'Está usted cancelando'">Cancelar</button>
+  <p id="msg"></p>
+</section>
+
+<!-- ============ EJ 4: menú desplegable ============ -->
+<section id="ej4">
+  <h2>EJ 4 - Menú desplegable</h2>
+  <ul>
+    <li onclick="cambia(this)">Opcion 1
+      <ul style="display: none">
+        <li>Subopción 1.1</li>
+        <li>Subopción 1.2</li>
+      </ul>
+    </li>
+    <li onclick="cambia(this)">Opcion 2
+      <ul style="display: none">
+        <li>Subopción 2.1</li>
+        <li>Subopción 2.2</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+
+<!-- ============ EJ 5: atributos y estilos ============ -->
+<section id="ej5">
+  <h2 id="titulo">EJ 5 - Atributos, style e innerText/innerHTML</h2>
+  <p>Duración: <span id="duracion">129</span> horas</p>
+  <a id="enlace" href="http://www.ejemplo.com">Enlace de prueba</a>
+  <p id="parrafo" class="normal">Párrafo con clase "normal"</p>
+  <button onclick="ej5estilos()">Cambiar estilos</button>
+  <button onclick="ej5atributos()">Leer atributos</button>
+  <button onclick="ej5html()">innerHTML vs innerText</button>
+</section>
+
+<!-- ============ EJ 6: classList ============ -->
+<section id="ej6">
+  <h2>EJ 6 - classList</h2>
+  <div id="page" class="info data dark caja">Caja con clases "info data dark"</div><br>
+  <button onclick="ej6add()">add('resaltado','grande')</button>
+  <button onclick="ej6remove()">remove('resaltado','grande')</button>
+  <button onclick="ej6toggle()">toggle('resaltado')</button>
+  <button onclick="ej6info()">contains / length / item</button>
+  <button onclick="ej6replace()">replace('dark','claro')</button>
+</section>
+
+<!-- ============ EJ 7: forEach sobre HTMLCollection ============ -->
+<section id="ej7">
+  <h2>EJ 7 - forEach con Array.from</h2>
+  <div class="box">Box 1</div>
+  <div class="box">Box 2</div>
+  <div class="box">Box 3</div>
+  <div class="box">Box 4</div>
+  <div class="box">Box 5</div>
+  <button onclick="ej7()">Numerar y colorear boxes</button>
+</section>
+
+<!-- ============ EJ 8: lista dinámica ============ -->
+<section id="ej8">
+  <h2>EJ 8 - Lista de la compra dinámica</h2>
+  <input id="producto" type="text" placeholder="Producto">
+  <button onclick="ej8anadir()">Añadir</button>
+  <button onclick="ej8borrarPrimero()">Borrar primero</button>
+  <ul id="lista"></ul>
+  <p>Total: <span id="total">0</span></p>
+</section>
+
+<!-- ============ EJ 9: contador ============ -->
+<section id="ej9">
+  <h2>EJ 9 - Contador con eventos</h2>
+  <button onclick="ej9(1)">+1</button>
+  <button onclick="ej9(-1)">-1</button>
+  <button onclick="ej9(0)">Reset</button>
+  <p>Valor: <span id="contador">0</span></p>
+</section>
+
+<!-- ============ EJ 10: formulario ============ -->
+<section id="ej10">
+  <h2>EJ 10 - Validar formulario</h2>
+  <input id="nombre" type="text" placeholder="Nombre">
+  <input id="edad" type="text" placeholder="Edad">
+  <button onclick="ej10()">Validar</button>
+  <p id="resultado10"></p>
+</section>
+
+<!-- ============ EJ 11: tabla generada con DOM ============ -->
+<section id="ej11">
+  <h2>EJ 11 - Tabla de multiplicar generada con DOM</h2>
+  <input id="numTabla" type="text" placeholder="Número">
+  <button onclick="ej11()">Generar tabla</button>
+  <div id="tabla"></div>
+</section>
+
+<!-- ============ EJ 12: mostrar/ocultar ============ -->
+<section id="ej12">
+  <h2>EJ 12 - Mostrar / ocultar con style.display</h2>
+  <button onclick="ej12()">Mostrar / ocultar</button>
+  <p id="secreto">Este texto se oculta y se muestra.</p>
+</section>
+
+<!-- ============ EJ 13: eventos de ratón ============ -->
+<section id="ej13">
+  <h2>EJ 13 - onmouseover / onmouseout / ondblclick</h2>
+  <div id="zona" class="caja" onmouseover="this.style.backgroundColor='lightgreen'"
+       onmouseout="this.style.backgroundColor=''"
+       ondblclick="this.innerText='¡Doble click!'">Pasa el ratón / doble click</div>
+</section>
+
+<script>
+/* ======================================================
+   OJO: el acceso a los nodos solo es posible cuando el árbol DOM
+   está construido. Aquí los scripts están al final del body y las
+   funciones se llaman desde eventos, así que no hay problema.
+   Si el script estuviera en <head>, usar:
+      window.onload = function(){ ... }
+   o  document.addEventListener("DOMContentLoaded", init);
+   ====================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM listo");
+});
+
+// ---------- EJ 1 ----------
+function ej1() {
+  var enlaces = document.getElementsByTagName("a");
+  console.log("Número de enlaces de la página: " + enlaces.length);
+
+  var penultimo = enlaces[enlaces.length - 2];
+  console.log("Dirección del penúltimo enlace: " + penultimo.href);
+
+  var contador = 0;
+  for (var i = 0; i < enlaces.length; i++) {
+    if (enlaces[i].href === "http://prueba/") { // el navegador añade la "/" final
+      contador++;
+    }
+  }
+  console.log("Enlaces que enlazan a http://prueba: " + contador);
+
+  var parrafos = document.getElementsByTagName("p");
+  console.log("Enlaces del tercer párrafo: " + parrafos[2].getElementsByTagName("a").length);
+
+  // Otras formas de acceso
+  console.log("getElementsByClassName('parrafo'):", document.getElementsByClassName("parrafo").length);
+  console.log("getElementsByName('escrita'):", document.getElementsByName("escrita").length);
+  console.log("querySelector('.enlace'):", document.querySelector(".enlace").href);
+  console.log("querySelectorAll('#ej1 a'):", document.querySelectorAll("#ej1 a").length);
+  console.log("getElementById('ej1'):", document.getElementById("ej1").tagName);
+}
+
+// ---------- EJ 2 ----------
+function ej2crear() {
+  var cantidad = parseInt(prompt("¿Cuántos párrafos quieres añadir?"));
+  var padre = document.getElementById("contenedor");
+  for (var i = 1; i <= cantidad; i++) {
+    var p = document.createElement("p");                   // 1. nodo Element
+    var texto = document.createTextNode("Párrafo " + i);   // 2. nodo Text
+    p.appendChild(texto);                                  // 3. Text hijo de Element
+    padre.appendChild(p);                                  // 4. Element hijo del padre
+  }
+}
+
+function ej2eliminar() {
+  var padre = document.getElementById("contenedor");
+  var parrafos = padre.getElementsByTagName("p");
+  // la HTMLCollection es "viva": recorremos hasta que no queden
+  while (parrafos.length > 0) {
+    padre.removeChild(parrafos[0]);
+  }
+}
+
+function ej2eliminarUltimo() {
+  var parrafos = document.getElementById("contenedor").getElementsByTagName("p");
+  if (parrafos.length > 0) {
+    var ultimo = parrafos[parrafos.length - 1];
+    ultimo.parentNode.removeChild(ultimo);
+  }
+}
+
+// ---------- EJ 4 ----------
+function cambia(elemento) {
+  var hijos = elemento.getElementsByTagName("ul");
+  for (var i = 0; i < hijos.length; i++) {
+    if (hijos[i].style.display != "none") {
+      hijos[i].style.display = "none";
+    } else {
+      hijos[i].style.display = "";
+    }
+  }
+}
+
+// ---------- EJ 5 ----------
+function ej5estilos() {
+  var titulo = document.getElementById("titulo");
+  titulo.style.border = "solid 2px #ff0f64";
+  titulo.style.backgroundColor = "#ffe0ec";   // background-color -> backgroundColor
+  titulo.style.fontSize = "26px";             // font-size -> fontSize
+  document.getElementById("duracion").innerText = 130;
+}
+
+function ej5atributos() {
+  var enlace = document.getElementById("enlace");
+  console.log("href:", enlace.href);
+  var parrafo = document.getElementById("parrafo");
+  console.log("parrafo.class:", parrafo.class);          // undefined
+  console.log("parrafo.className:", parrafo.className);  // "normal"
+  console.log("getAttribute('class'):", parrafo.getAttribute("class"));
+  parrafo.setAttribute("class", "normal resaltado");
+  enlace.href = "http://www.otra-web.com";
+  console.log("nuevo href:", enlace.href);
+}
+
+function ej5html() {
+  var p = document.getElementById("parrafo");
+  p.innerHTML = "Texto con <b>negrita</b>";   // interpreta etiquetas
+  console.log("innerHTML:", p.innerHTML);
+  console.log("innerText:", p.innerText);     // solo el texto
+  p.innerText = "Texto con <b>negrita</b>";   // NO interpreta etiquetas
+}
+
+// ---------- EJ 6 ----------
+function ej6add() {
+  document.getElementById("page").classList.add("resaltado", "grande");
+  console.log(document.getElementById("page").className);
+}
+function ej6remove() {
+  document.getElementById("page").classList.remove("resaltado", "grande");
+  console.log(document.getElementById("page").className);
+}
+function ej6toggle() {
+  var div = document.getElementById("page");
+  console.log("toggle devuelve:", div.classList.toggle("resaltado"));
+}
+function ej6info() {
+  var div = document.getElementById("page");
+  console.log("classList:", div.classList);
+  console.log("length:", div.classList.length);
+  console.log("item(0):", div.classList.item(0));
+  console.log("Array.from:", Array.from(div.classList));
+  console.log("contains('info'):", div.classList.contains("info"));
+  console.log("contains('warning'):", div.classList.contains("warning"));
+}
+function ej6replace() {
+  document.getElementById("page").classList.replace("dark", "claro");
+  console.log(document.getElementById("page").className);
+}
+
+// ---------- EJ 7 ----------
+function ej7() {
+  var elements = document.getElementsByClassName("box");
+  Array.from(elements).forEach(function (element, index) {
+    element.innerHTML = "Box " + (index + 1) + " (recorrido con forEach)";
+    element.style.backgroundColor = index % 2 === 0 ? "lightblue" : "lightyellow";
+  });
+}
+
+// ---------- EJ 8 ----------
+function ej8anadir() {
+  var input = document.getElementById("producto");
+  if (input.value === "") {
+    alert("Escribe un producto");
+    return;
+  }
+  var li = document.createElement("li");
+  li.appendChild(document.createTextNode(input.value));
+  document.getElementById("lista").appendChild(li);
+  input.value = "";
+  ej8actualizarTotal();
+}
+function ej8borrarPrimero() {
+  var lista = document.getElementById("lista");
+  if (lista.firstChild) {
+    lista.removeChild(lista.firstChild);
+  }
+  ej8actualizarTotal();
+}
+function ej8actualizarTotal() {
+  document.getElementById("total").innerText =
+    document.getElementById("lista").getElementsByTagName("li").length;
+}
+
+// ---------- EJ 9 ----------
+var valorContador = 0;
+function ej9(cambio) {
+  if (cambio === 0) valorContador = 0;
+  else valorContador += cambio;
+  document.getElementById("contador").innerText = valorContador;
+}
+
+// ---------- EJ 10 ----------
+function ej10() {
+  var nombre = document.getElementById("nombre").value;
+  var edad = parseInt(document.getElementById("edad").value);
+  var res = document.getElementById("resultado10");
+  if (nombre === "" || isNaN(edad)) {
+    res.innerText = "Error: rellena nombre y una edad numérica";
+    res.style.color = "red";
+  } else if (edad >= 18) {
+    res.innerText = "Hola " + nombre + ", eres mayor de edad";
+    res.style.color = "green";
+  } else {
+    res.innerText = "Hola " + nombre + ", eres menor de edad";
+    res.style.color = "orange";
+  }
+}
+
+// ---------- EJ 11 ----------
+function ej11() {
+  var n = parseInt(document.getElementById("numTabla").value);
+  var contenedor = document.getElementById("tabla");
+  contenedor.innerHTML = "";  // vaciar lo anterior
+  if (isNaN(n)) {
+    contenedor.innerText = "Introduce un número";
+    return;
+  }
+  var tabla = document.createElement("table");
+  tabla.border = "1";
+  for (var i = 0; i <= 10; i++) {
+    var fila = document.createElement("tr");
+    var celda = document.createElement("td");
+    celda.appendChild(document.createTextNode(n + " x " + i + " = " + n * i));
+    fila.appendChild(celda);
+    tabla.appendChild(fila);
+  }
+  contenedor.appendChild(tabla);
+}
+
+// ---------- EJ 12 ----------
+function ej12() {
+  var p = document.getElementById("secreto");
+  if (p.style.display !== "none") {
+    p.style.display = "none";
+  } else {
+    p.style.display = "";
+  }
+}
+</script>
+</body>
+</html>
