@@ -17,7 +17,7 @@ let numeros2 = [31, 23, 23];
 let cualquiera = "hola";
 cualquiera = 14;
 console.log(num, verdadero, nombre, apellidos, numeros, numeros2, cualquiera);
-// let edad: number = "treinta";   // Type 'string' is not assignable to type 'number'
+// ❌ let edad: number = "treinta";   // Type 'string' is not assignable to type 'number'
 // ---------- EJ 2: tipos propios, unión, tupla, enum ----------
 console.log("=== EJ2 type, unión, tupla, enum ===");
 let cadena2 = "ies";
@@ -42,7 +42,7 @@ let years = [7, 17, 19];
 let cualesquiera = ["aa", 12, 19];
 let nombres = ["Ana", "Luis"];
 nombres.push("Marta");
-// nombres.push(5);    // Argument of type 'number' is not assignable to parameter of type 'string'
+// ❌ nombres.push(5);    // Argument of type 'number' is not assignable to parameter of type 'string'
 console.log(lenguajes, years, cualesquiera, nombres);
 // ---------- EJ 4: funciones tipadas ----------
 console.log("=== EJ4 funciones ===");
@@ -50,7 +50,7 @@ function saludar(nombre) {
     return "Hola " + nombre.toUpperCase();
 }
 console.log(saludar("Juan"));
-// saludar(123);      // Argument of type 'number' is not assignable to parameter of type 'string'
+// ❌ saludar(123);      // Argument of type 'number' is not assignable to parameter of type 'string'
 function sumar(valor1, valor2) {
     return valor1 + valor2;
 }
