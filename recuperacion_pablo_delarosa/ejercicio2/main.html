@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Stranger Things</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <h1>Stranger Things</h1>
+  <p id="descripcion">Hawkins, Indiana, 1983. Un niño desaparece sin dejar rastro.</p>
+  <img id="cartel" src="temporada1.png" alt="Cartel de la temporada" width="300">
+  <button onclick="alternarCartel()">Alternar Cartel</button>
+
+  <h2>Teorías de los fans</h2>
+  <ul id="teorias">
+    <li>Once sabe más de lo que cuenta.</li>
+    <li>Las luces de Navidad son la clave.</li>
+  </ul>
+
+  <button onclick="cambiarDescripcion()">Cambiar Descripción</button>
+  <button onclick="anadirTeoria()">Añadir Teoría</button>
+  <button onclick="eliminarPrimeraTeoria()">Eliminar Primera Teoría</button>
+  <button onclick="destacarPrimeraTeoria()">Destacar Primera Teoría</button>
+
+  <input type="text" id="nuevaTeoria" placeholder="Escribe tu teoría">
+  <button onclick="anadirTeoriaPersonalizada()">Añadir Teoría Personalizada</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
